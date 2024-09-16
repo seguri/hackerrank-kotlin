@@ -1,12 +1,12 @@
-package leetcode._1;
+package name.seguri.java.leetcode._1;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
-class JavaSolutionTest {
+class SolutionTest {
 
-  private final JavaSolution sut = new JavaSolution();
+  private final Solution sut = new Solution();
 
   @Test
   void input1() {

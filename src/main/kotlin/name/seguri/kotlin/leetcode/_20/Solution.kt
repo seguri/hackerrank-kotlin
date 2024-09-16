@@ -1,4 +1,4 @@
-package leetcode._20
+package name.seguri.kotlin.leetcode._20
 
 import kotlin.collections.ArrayDeque
 

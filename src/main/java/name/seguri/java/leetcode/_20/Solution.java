@@ -1,9 +1,9 @@
-package leetcode._20;
+package name.seguri.java.leetcode._20;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-class JavaSolution {
+class Solution {
   public boolean isValid(String s) {
     Deque<Character> stack = new ArrayDeque<>();
     for (int i = 0; i < s.length(); i++) {

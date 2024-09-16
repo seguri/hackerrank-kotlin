@@ -1,4 +1,4 @@
-package leetcode._1;
+package name.seguri.java.leetcode._1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ import java.util.Map;
  *       index j starting from i)
  * </ul>
  */
-class JavaSolution {
+class Solution {
 
   /** O(n) solution */
   public int[] twoSum(int[] nums, int target) {

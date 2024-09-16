@@ -1,4 +1,4 @@
-package leetcode._1
+package name.seguri.kotlin.leetcode._1
 
 /**
  * Compared to the Java version:

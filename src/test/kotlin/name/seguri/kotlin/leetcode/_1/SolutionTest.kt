@@ -1,4 +1,4 @@
-package leetcode._1
+package name.seguri.kotlin.leetcode._1
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
