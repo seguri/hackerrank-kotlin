@@ -3,7 +3,6 @@ package name.seguri.java.leetcode._110;
 import static name.seguri.java.leetcode._110.TreeNode.of;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class SolutionTest {
@@ -35,7 +34,6 @@ class SolutionTest {
     assertThat(result).isTrue();
   }
 
-  @Disabled("The current solution is wrong")
   @Test
   void input4() {
     var root = of(1, 2, 2, 3, null, null, 3, 4, null, null, 4);
