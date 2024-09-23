@@ -6,7 +6,13 @@ class Solution {
       return true;
     }
 
-    return Math.abs(maxHeight(root.left) - maxHeight(root.right)) <= 1;
+    int maxLeftHeight = maxHeight(root.left);
+    int maxRightHeight = maxHeight(root.right);
+    if (Math.abs(maxLeftHeight - maxRightHeight) > 1) {
+      return false;
+    }
+
+    return isBalanced(root.left) && isBalanced(root.right);
   }
 
   int maxHeight(TreeNode node) {
