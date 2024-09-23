@@ -2,27 +2,25 @@ package name.seguri.java.leetcode._110;
 
 class Solution {
   public boolean isBalanced(TreeNode root) {
-    if (root == null) {
+    try {
+      maxHeight(root);
       return true;
-    }
-
-    int maxLeftHeight = maxHeight(root.left);
-    int maxRightHeight = maxHeight(root.right);
-    if (Math.abs(maxLeftHeight - maxRightHeight) > 1) {
+    } catch (UnbalancedSubtreesException e) {
       return false;
     }
-
-    return isBalanced(root.left) && isBalanced(root.right);
   }
 
   int maxHeight(TreeNode node) {
     if (node == null) {
       return 0;
     }
-
-    var maxLeftHeight = 1 + maxHeight(node.left);
-    var maxRightHeight = 1 + maxHeight(node.right);
-
-    return Math.max(maxLeftHeight, maxRightHeight);
+    var leftHeight = maxHeight(node.left);
+    var rightHeight = maxHeight(node.right);
+    if (Math.abs(leftHeight - rightHeight) > 1) {
+      throw new UnbalancedSubtreesException();
+    }
+    return 1 + Math.max(leftHeight, rightHeight);
   }
+
+  static class UnbalancedSubtreesException extends RuntimeException {}
 }
