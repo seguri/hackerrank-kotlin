@@ -1,6 +1,6 @@
 plugins {
-  kotlin("jvm") version "2.0.10"
-  id("com.diffplug.spotless") version "7.0.0.BETA2"
+  kotlin("jvm") version "2.1.10"
+  id("com.diffplug.spotless") version "7.0.2"
 }
 
 group = "name.seguri.kotlin"
@@ -11,22 +11,19 @@ repositories { mavenCentral() }
 
 dependencies {
   testImplementation(kotlin("test"))
-  testImplementation("org.assertj:assertj-core:3.26.3")
-  testImplementation("org.mockito:mockito-core:5.13.0")
+  testImplementation("org.junit.jupiter:junit-jupiter-api:5.12.0")
+  testImplementation("org.assertj:assertj-core:3.27.3")
+  testImplementation("org.mockito:mockito-core:5.16.0")
 }
 
-tasks.test { useJUnitPlatform() }
+tasks.withType<Test> { useJUnitPlatform() }
+
+java { toolchain { languageVersion = JavaLanguageVersion.of(21) } }
 
 kotlin { jvmToolchain(21) }
 
 spotless {
   java { googleJavaFormat().reorderImports(true).formatJavadoc(true) }
-  kotlin {
-    target("**/*.kt", "**/*.kts")
-    // version, style and all configurations here are optional
-    ktfmt("0.52").googleStyle().configure {
-      it.setRemoveUnusedImports(true)
-      it.setManageTrailingCommas(true)
-    }
-  }
+  kotlin { ktfmt("0.54").googleStyle().configure { it.setRemoveUnusedImports(true) } }
+  kotlinGradle { ktfmt("0.54") }
 }
