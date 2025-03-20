@@ -1,6 +1,10 @@
+import java.net.URI
+import org.jetbrains.dokka.gradle.DokkaTask
+
 plugins {
   kotlin("jvm") version "2.1.10"
   id("com.diffplug.spotless") version "7.0.2"
+  id("org.jetbrains.dokka") version "2.0.0"
 }
 
 group = "name.seguri.kotlin"
@@ -26,4 +30,30 @@ spotless {
   java { googleJavaFormat().reorderImports(true).formatJavadoc(true) }
   kotlin { ktfmt("0.54").googleStyle().configure { it.setRemoveUnusedImports(true) } }
   kotlinGradle { ktfmt("0.54") }
+}
+
+tasks.withType<DokkaTask>().configureEach {
+  dokkaSourceSets {
+    configureEach {
+      skipEmptyPackages.set(true)
+
+      // Configure Java source set
+      sourceRoots.from(file("src/main/java"))
+      sourceLink {
+        localDirectory.set(file("src/main/java"))
+        remoteUrl.set(
+            URI("https://github.com/seguri/hackerrank-kotlin/tree/main/src/main/java").toURL())
+        remoteLineSuffix.set("#L")
+      }
+
+      // Configure Kotlin source set
+      sourceRoots.from(file("src/main/kotlin"))
+      sourceLink {
+        localDirectory.set(file("src/main/kotlin"))
+        remoteUrl.set(
+            URI("https://github.com/seguri/hackerrank-kotlin/tree/main/src/main/kotlin").toURL())
+        remoteLineSuffix.set("#L")
+      }
+    }
+  }
 }
